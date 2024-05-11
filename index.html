@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planos</title>
+    <link rel="stylesheet" href="style.css">   
+</head>
+<body>
+    <h1>coisas que faltam comprar</h1>
+    
+    <form action="#" method="post" autocomplete="on">
+        <fieldset>
+        
+            <legend>Banheiro</legend>
+            
+            <input type="checkbox" id="ibanho">
+            <label for="ibanho">Toalha de Banho</label> <br>
+
+            <input type="checkbox" id="irosto">
+            <label for="irosto">Toalha de Rosto</label> <br>
+
+            <input type="checkbox" id="itapete">
+            <label for="itapete">Tapete</label> <br>
+            
+            <input type="checkbox" id="ichuv">
+            <label for="ichuv">Box do Chuveiro</label> <br>
+
+            <input type="checkbox" id="isabo">
+            <label for="isabo">Saboneteira</label> <br>
+
+            <input type="checkbox" id="iespe">
+            <label for="iespe">Espelho</label> <br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Cozinha</legend>
+
+            <input type="checkbox" id="ijarra">
+            <label for="ijarra">Jarra de Agua</label> <br>
+
+            <input type="checkbox" id="iprato">
+            <label for="iprato">Pano de prato</label> <br>
+
+            <input type="checkbox" id="iteso">
+            <label for="iteso">Tesoura</label> <br>
+
+            <input type="checkbox" id="ita">
+            <label for="ita">Taça</label> <br>
+
+            <input type="checkbox" id="iaçu">
+            <label for="iaçu">Açucareiro</label> <br>
+
+            <input type="checkbox" id="iagua">
+            <label for="iagua">Filtro de Água</label> <br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Quarto</legend>
+
+            <input type="checkbox" id="icama">
+            <label for="icama">Jogo de Cama</label> <br>
+
+            <input type="checkbox" id="iedre">
+            <label for="iedre">Edredom</label> <br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Lavanderia</legend>
+
+            <input type="checkbox" id="ivasso">
+            <label for="ivasso">Vassoura</label> <br>
+
+            <input type="checkbox" id="irodo">
+            <label for="irodo">Rodo</label> <br>
+
+            <input type="checkbox" id="ilixo">
+            <label for="ilixo">Pá de lixo</label> <br>
+
+            <input type="checkbox" id="ilimp">
+            <label for="ilimp">Panos de limpeza</label> <br>
+
+            <input type="checkbox" id="ivaral">
+            <label for="ivaral">Varal</label> <br>
+
+            <input type="checkbox" id="ibalde">
+            <label for="ibalde">Baldes</label> <br>
+
+            <input type="checkbox" id="ipassar">
+            <label for="ipassar">Tábua de Passar</label> <br>
+        </fieldset>
+        <button type="button" onclick="salvar()">Salvar</button>   
+    </form>
+    <script>
+        function salvar() {
+            // Captura o estado dos checkboxes
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var checkedValues = {};
+            checkboxes.forEach(function(checkbox) {
+                checkedValues[checkbox.name] = checkbox.checked;
+            });
+    
+            // Converte os valores em formato JSON e armazena no localStorage
+            localStorage.setItem('checkboxValues', JSON.stringify(checkedValues));
+    
+            alert('SALVOU');
+        }
+    
+        // Recupera os valores salvos, se existirem, e marca os checkboxes correspondentes
+        document.addEventListener('DOMContentLoaded', function() {
+            var savedValues = JSON.parse(localStorage.getItem('checkboxValues'));
+            if (savedValues) {
+                Object.keys(savedValues).forEach(function(key) {
+                    var checkbox = document.querySelector('input[name="' + key + '"]');
+                    if (checkbox) {
+                        checkbox.checked = savedValues[key];
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
