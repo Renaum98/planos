@@ -5,12 +5,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Sedan+SC&display=swap');
 * {
     font-family: "Raleway", sans-serif;
+    padding: 0px;
+    margin: 0px;
 }
 
 body {
     background-color: whitesmoke;
     background-attachment: fixed;
-    width: 98vw;
+    width: 100vw;
 }
 
 h1 {
@@ -25,12 +27,16 @@ h1 {
     
 }
 
+table {
+    max-width: 1000px;
+    min-width: 300px;
+}
+
 fieldset {
     margin: auto;
     padding: 10px;
     border-radius: 10px;
-    max-width: 500px;
-    min-width: none;
+    width: 500px;
     background-color: white;
     margin-top: 10px;
     margin-bottom: 10px;
