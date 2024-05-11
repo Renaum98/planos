@@ -9,7 +9,7 @@
 <body>
     <h1>coisas que faltam comprar</h1>
     
-    <form action="#" method="post" autocomplete="on">
+    <form id="checkbox-form">
         <fieldset>
         
             <legend>Banheiro</legend>
@@ -97,13 +97,13 @@
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');
             var checkedValues = {};
             checkboxes.forEach(function(checkbox) {
-                checkedValues[checkbox.name] = checkbox.checked;
+                checkedValues[checkbox.id] = checkbox.checked;
             });
     
             // Converte os valores em formato JSON e armazena no localStorage
             localStorage.setItem('checkboxValues', JSON.stringify(checkedValues));
     
-            alert('SALVOU');
+            alert('Dados salvos com sucesso!');
         }
     
         // Recupera os valores salvos, se existirem, e marca os checkboxes correspondentes
@@ -111,7 +111,7 @@
             var savedValues = JSON.parse(localStorage.getItem('checkboxValues'));
             if (savedValues) {
                 Object.keys(savedValues).forEach(function(key) {
-                    var checkbox = document.querySelector('input[name="' + key + '"]');
+                    var checkbox = document.getElementById(key);
                     if (checkbox) {
                         checkbox.checked = savedValues[key];
                     }
